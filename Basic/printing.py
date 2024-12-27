@@ -1,4 +1,4 @@
-from utility.utils import creat_devices  # Local module to create devices
+from project.utility.utils import creat_devices  # Local module to create devices
 from pprint import pprint  #pretty print module
 from operator import itemgetter
 from tabulate import tabulate
@@ -13,8 +13,8 @@ print(devices)'''
 
 print()
 
-'''print("******Using pprint******")
-pprint(devices)'''
+print("******Using pprint******")
+pprint(devices)
 
 print()
 
