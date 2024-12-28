@@ -28,7 +28,7 @@ for device_type in [csr, nxos]:
     print("connection: ", connection)
 
     print(f"\n\nShowing running config for {device_type} ------------")
-    output = connection.send_command("show running config")
+    output = connection.send_command("show running-config")
     print(output)
 
     print(f"\n\nShowing ip route of {device_type} ------------")
@@ -69,11 +69,11 @@ for command_type, command in commands.items():
 
     print("\n....for CSR: {}------".format(command[csr]))
     csr_output = csr_connection.send_command(command[csr])
-    print(output)
+    print(csr_output)
 
     print("\n....for NXOS: {}------".format(command[nxos]))
     nxos_output = nxos_connection.send_command(command[nxos])
-    print(output)
+    print(nxos_output)
 
     if command_type == show_version:
         csr_version_raw = csr_output

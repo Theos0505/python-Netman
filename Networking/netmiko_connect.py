@@ -1,25 +1,49 @@
 from netmiko import Netmiko
 
 
-def connect(device_type):
-    cisco_sandbox_type = {
-        "csr": {
-            "hostname": "ios-xe-mgmt.cisco.com",
-            "port": 8181,
-            'ip': "131.226.217.149",
-            "username": "developer",
+# Below is for napalm connection
+cisco_sandbox_type = {
+        "ios": {
+            #"hostname": "ios-xe-mgmt.cisco.com",  # Alternate ios box
+            "hostname": "sandbox-iosxr-1.cisco.com", # Alternate ios box
+            "port": 22,
+            #'ip': "131.226.217.181",  # IP of alternate box
+            'ip': "131.226.217.150", # IP of alternate box
+            "username": "admin",
             "password": "C1sco12345",
             "device_type": "cisco_ios"
         },
         "nxos": {
-             "hostname": "sbx-nso-mgmt.cisco.com",
-             "port": 8181,
+             "hostname": "sbx-nxos-mgmt.cisco.com",
+             "port": 22,
              "username": "admin",
              "password": "Admin_1234!",
              "device_type": "cisco_nxos"
 
         }
     }
+
+def connect(device_type):
+    #cisco_sandbox_type = {
+    #     "csr": {
+    #         #"hostname": "ios-xe-mgmt.cisco.com",  # Alternate ios box
+    #         "hostname": "sandbox-iosxr-1.cisco.com", # Alternate ios box
+    #         "port": 22,
+    #         #'ip': "131.226.217.181",  # IP of alternate box
+    #         'ip': "131.226.217.150", # IP of alternate box
+    #         "username": "admin",
+    #         "password": "C1sco12345",
+    #         "device_type": "cisco_ios"
+    #     },
+    #     "nxos": {
+    #          "hostname": "sbx-nxos-mgmt.cisco.com",
+    #          "port": 22,
+    #          "username": "admin",
+    #          "password": "Admin_1234!",
+    #          "device_type": "cisco_nxos"
+    #
+    #     }
+    # }
 
     print(f"\nConnecting to {cisco_sandbox_type[device_type]['hostname']}:{cisco_sandbox_type[device_type]['port']}")
     print("\n\n...,,This might take a while")
