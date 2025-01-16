@@ -4,15 +4,23 @@ from netmiko import Netmiko
 # Below is for napalm connection
 cisco_sandbox_type = {
         "ios": {
-            #"hostname": "ios-xe-mgmt.cisco.com",  # Alternate ios box
-            "hostname": "sandbox-iosxr-1.cisco.com", # Alternate ios box
+            "hostname": "ios-xe-mgmt.cisco.com",  # Alternate ios box
+            #"hostname": "sandbox-iosxr-1.cisco.com", # Alternate ios box
             "port": 22,
-            #'ip': "131.226.217.181",  # IP of alternate box
-            'ip': "131.226.217.150", # IP of alternate box
-            "username": "admin",
-            "password": "C1sco12345",
+            'ip': "131.226.217.181",  # IP of alternate box
+            #'ip': "131.226.217.150", # IP of alternate box
+            'username': "admin",  # Username is same for both
+            "password": "C1sco12345",  # Password is same for both
             "device_type": "cisco_ios"
         },
+        # "ios-xr": {
+        #     "hostname": "sandbox-iosxr-1.cisco.com",
+        #     "port": 22,
+        #     'ip': "131.226.217.150",
+        #     'username': "admin",  # Username is same for both
+        #     "password": "C1sco12345",  # Password is same for both
+        #     "device_type": "cisco_ios"
+        # },
         "nxos": {
              "hostname": "sbx-nxos-mgmt.cisco.com",
              "port": 22,

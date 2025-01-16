@@ -8,6 +8,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 IOS = 'ios'
+IOSXR = 'ios-xr'
 NXOS = 'nxos' # for napalm API
 NXOS_SSH = 'nxos_ssh' # For connecting via napalm ssh
 
@@ -20,8 +21,11 @@ devices[NXOS_SSH] = copy.deepcopy(devices[NXOS])
 
 for device_type, device in devices.items():
     print(f'\n------------connecting to {device_type} : {device["hostname"]}---------')
-    
-    driver = napalm.get_network_driver(device_type)
+
+    if device_type == IOSXR:
+        driver  = napalm.get_network_driver('ios')
+    else:
+        driver = napalm.get_network_driver(device_type)
     if device_type == NXOS:
         napalm_device = driver(
             hostname=device["hostname"],
@@ -53,7 +57,7 @@ for device_type, device in devices.items():
     print("\n------vlans-------")
     try:
         print(json.dumps(napalm_device.get_vlans(), sort_keys=True, indent=4))
-    except NotImplemented as e:
+    except NotImplementedError as e:
         print(f"oops, looks like this isn't implemented for {device['hostname']}, error: {e}")
 
     print("\n------snmp-------")
