@@ -2,14 +2,9 @@ from nmap import PortScanner, PortScannerAsync
 
 from pprint import pprint
 
-
-
 nm = PortScanner()
 
-
-
 while True:
-
 
     ip = input("\nInput IP address to scan: ")
 
@@ -22,11 +17,9 @@ while True:
 
     print(f"--- --- command: {nm.command_line()}")
 
-
     print("----- nmap scan output -------------------")
 
     pprint(output)
-
 
     # DEMYSTIFYING TREATING CLASS LIKE DICT
 
@@ -76,10 +69,3 @@ print("\n Scanning all hosts in network using ICMP ECHO with a callback")
 nma.scan("192.168.1.0/29", callback=discovered_host, arguments="-PE")
 while nma.still_scanning():
     nma.wait(5)
-
-
-
-
-
-
-
